@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dragone Supplement | Original Supplements in Egypt</title>
+<meta name="description" content="Original protein, creatine, pre-workout, and vitamins. Order via WhatsApp with payment on delivery.">
+<meta name="theme-color" content="#1b0f0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Lalezar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --base:#1b0f0d;
+  --surface:#2a1814;
+  --raised:#37201a;
+  --line:#4a2e26;
+  --ember:#ff4d1c;
+  --ember-hi:#ff6a3d;
+  --gold:#ffc247;
+  --bone:#f6ead9;
+  --ash:#b8a197;
+  --cut:16px;
+  --scales:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='none' stroke='%23ff4d1c' stroke-opacity='.2'%3E%3Ccircle cx='16' cy='0' r='16'/%3E%3Ccircle cx='0' cy='16' r='16'/%3E%3Ccircle cx='32' cy='16' r='16'/%3E%3Ccircle cx='16' cy='32' r='16'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--base);color:var(--bone);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;line-height:1.6;min-height:100vh}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.chamfer:focus-visible,.btn:focus-visible,.card :focus-visible{outline-offset:-4px}
+[hidden]{display:none!important}
+
+/* ---------- Demo notice ---------- */
+.demo{background:var(--gold);color:var(--base);font-size:13px;font-weight:600;text-align:center;padding:8px 12px}
+
+/* ---------- Masthead ---------- */
+.hero{position:relative;overflow:hidden;padding:26px 16px 18px;text-align:center}
+.hero::before{content:"";position:absolute;inset:0;background:var(--scales);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent);mask-image:linear-gradient(to bottom,#000 30%,transparent)}
+.hero>*{position:relative}
+.wordmark{display:flex;flex-direction:column;align-items:center;line-height:1}
+.wm-main{font-family:'Big Shoulders Display','Lalezar',sans-serif;font-weight:900;font-size:clamp(64px,29vw,300px);line-height:.84;letter-spacing:-.01em;direction:ltr;
+  background:linear-gradient(to bottom,var(--bone) 0%,var(--gold) 38%,var(--ember) 72%,#b3290c 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:ignite 1.5s ease-out both}
+.wm-sub{font-family:'Big Shoulders Display','Lalezar',sans-serif;font-weight:800;font-size:clamp(16px,4.6vw,38px);letter-spacing:.14em;color:var(--ash);margin-top:6px;direction:ltr}
+.tagline{margin-top:12px;font-size:clamp(15px,3.6vw,20px);font-weight:600}
+@keyframes ignite{from{filter:brightness(.28) saturate(.3)}55%{filter:brightness(1.3) saturate(1.1)}to{filter:none}}
+
+.facts{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line);font-size:12.5px;text-align:center}
+.facts li{padding:10px 6px;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center}
+.facts li+li{border-inline-start:1px solid var(--line)}
+.facts i{color:var(--ember);font-size:15px}
+@media(min-width:720px){.facts{font-size:14px}.facts li{flex-direction:row;gap:10px}}
+
+/* ---------- Toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--base);border-bottom:1px solid var(--line);padding:10px 16px 8px}
+.tb-inner{max-width:1240px;margin:0 auto;display:grid;gap:10px}
+.tb-row{display:flex;gap:10px;align-items:center}
+.search{position:relative;flex:1}
+.search i{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);color:var(--ash);pointer-events:none}
+.search input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:11px 14px;padding-inline-start:40px;font-size:15px}
+.search input::placeholder{color:var(--ash)}
+.search input:focus{border-color:var(--ember);outline:none}
+.cart-btn{position:relative;width:46px;height:46px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;font-size:18px}
+.cart-btn:hover{border-color:var(--ember)}
+.badge-count{position:absolute;top:-7px;inset-inline-end:-7px;min-width:20px;height:20px;padding:0 5px;background:var(--gold);color:var(--base);font-size:12px;font-weight:700;border-radius:10px;display:grid;place-items:center}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:7px 16px;font-size:14px;font-weight:500}
+.chip:hover{border-color:var(--ember)}
+.chip[aria-pressed="true"]{background:var(--ember);border-color:var(--ember);color:var(--base);font-weight:700}
+
+/* ---------- Grid ---------- */
+.wrap{max-width:1240px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:16px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr);gap:18px;padding:24px 16px}}
+@media(min-width:1040px){.grid{grid-template-columns:repeat(4,1fr)}}
+.state{grid-column:1/-1;text-align:center;color:var(--ash);padding:48px 12px;font-size:15px}
+
+.card{background:var(--surface);display:flex;flex-direction:column;
+  clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)))}
+.card.sk .media{background:var(--raised)}
+.card.sk .sk-line{height:12px;background:var(--raised);margin:12px;border-radius:2px}
+.media{position:relative;aspect-ratio:1/1;background:var(--raised) var(--scales);display:grid;place-items:center;overflow:hidden}
+.media img{width:100%;height:100%;object-fit:contain;padding:12px}
+.media.out img,.media.out .ph{filter:grayscale(1) brightness(.6)}
+.ph{font-size:56px;color:var(--line)}
+.badge{position:absolute;top:10px;inset-inline-start:10px;padding:3px 10px;font-size:13px;font-weight:700;border-radius:2px}
+.badge.sale{background:var(--gold);color:var(--base)}
+.badge.soldout{background:var(--base);color:var(--bone);border:1px solid var(--line)}
+.body{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.cat{font-size:13px;color:var(--ash)}
+.name{font-size:15px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.desc{font-size:13px;color:var(--ash);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-top:auto;padding-top:8px}
+.price{font-family:'Big Shoulders Display','Lalezar',sans-serif;font-weight:900;font-size:30px;line-height:1;color:var(--gold);direction:ltr}
+.cur{font-size:13px;color:var(--gold);font-weight:600}
+.old{font-size:13px;color:var(--ash);text-decoration:line-through}
+.actions{display:flex;gap:8px;margin-top:10px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;background:var(--ember);color:var(--base);font-weight:700;font-size:14px;padding:11px 14px;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:background-color .15s}
+.btn:hover{background:var(--ember-hi)}
+.btn.grow{flex:1}
+.btn.ghost{background:var(--raised);color:var(--bone)}
+.btn.ghost:hover{background:var(--line)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:disabled:hover{background:var(--ember)}
+.btn.ghost:disabled:hover{background:var(--raised)}
+.btn.wide{width:100%;padding:14px}
+
+/* ---------- Drawer ---------- */
+.overlay{position:fixed;inset:0;background:rgba(10,4,3,.7);z-index:90;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.overlay.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(100%,400px);background:var(--surface);z-index:100;display:flex;flex-direction:column;border-inline-start:1px solid var(--line);
+  transform:translateX(-105%);transition:transform .25s ease}
+html[dir="ltr"] .drawer{transform:translateX(105%)}
+.drawer.open{transform:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.dr-head h2{font-size:18px}
+.icon-btn{width:40px;height:40px;background:none;border:1px solid var(--line);border-radius:4px;font-size:16px}
+.icon-btn:hover{border-color:var(--ember)}
+.dr-list{flex:1;overflow-y:auto;padding:14px 18px;display:grid;gap:10px;align-content:start}
+.dr-empty{color:var(--ash);text-align:center;padding:48px 8px}
+.line-item{background:var(--raised);padding:12px;display:grid;gap:8px}
+.li-name{font-weight:600;font-size:14px}
+.li-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:32px;height:32px;background:var(--base);border:1px solid var(--line);border-radius:4px}
+.qty button:hover{border-color:var(--ember)}
+.qty span{min-width:24px;text-align:center;font-weight:600}
+.li-sum{color:var(--gold);font-weight:700}
+.dr-foot{padding:16px 18px;border-top:1px solid var(--line);display:grid;gap:10px}
+.total{display:flex;justify-content:space-between;font-size:17px;font-weight:700}
+.total .v{color:var(--gold)}
+.note{font-size:13px;color:var(--ash)}
+
+/* ---------- Misc ---------- */
+.fab{position:fixed;inset-block-end:18px;inset-inline-start:16px;z-index:60;width:54px;height:54px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.toast{position:fixed;inset-block-end:84px;inset-inline:0;margin-inline:auto;width:fit-content;max-width:90%;background:var(--bone);color:var(--base);font-weight:600;font-size:14px;padding:10px 18px;border-radius:4px;z-index:120;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:none}
+footer{margin-top:24px;border-top:1px solid var(--line);padding:28px 16px 90px;text-align:center;color:var(--ash);font-size:14px}
+footer .fb{font-family:'Big Shoulders Display','Lalezar',sans-serif;font-weight:900;font-size:28px;color:var(--bone);letter-spacing:.02em;direction:ltr}
+footer a{color:var(--gold);font-weight:600;text-decoration:none;direction:ltr;unicode-bidi:embed}
+@media(prefers-reduced-motion:reduce){
+  .wm-main{animation:none}
+  html{scroll-behavior:auto}
+  .drawer,.overlay,.toast{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo" id="demoBar" hidden>Demo mode: These are sample products until you connect Supabase in config.js</div>
+
+<header class="hero">
+  <h1 class="wordmark" aria-label="Dragone Supplement">
+    <span class="wm-main" aria-hidden="true">DRAGONE</span>
+    <span class="wm-sub" aria-hidden="true">SUPPLEMENT</span>
+  </h1>
+  <p class="tagline">Original supplements. Results you can see.</p>
+</header>
+
+<ul class="facts">
+  <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>100% Original</span></li>
+  <li><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery to all governorates</span></li>
+  <li><i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i><span>Payment on delivery</span></li>
+</ul>
+
+<div class="toolbar">
+  <div class="tb-inner">
+    <div class="tb-row">
+      <label class="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="q" type="search" placeholder="Search for a product" aria-label="Search for a product" autocomplete="off">
+      </label>
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Open cart">
+        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+        <span class="badge-count" id="badge" hidden>0</span>
+      </button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Categories"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <noscript><p class="state">This website requires JavaScript to display the products.</p></noscript>
+</main>
+
+<footer>
+  <div class="fb">DRAGONE SUPPLEMENT</div>
+  <p style="margin-top:6px">For orders and inquiries, contact us on WhatsApp: <a id="footPhone" href="#" rel="noopener" target="_blank"></a></p>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" inert>
+  <div class="dr-head">
+    <h2>Shopping Cart</h2>
+    <button class="icon-btn" id="closeCart" type="button" aria-label="Close cart"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  </div>
+  <div class="dr-list" id="cartList"></div>
+  <div class="dr-foot">
+    <div class="total"><span>Total</span><span class="v" id="cartTotal">0 EGP</span></div>
+    <button class="btn wide" id="sendBtn" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send order via WhatsApp</button>
+    <p class="note">Payment on delivery. Order confirmation and shipping details will be handled via WhatsApp.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CFG = window.APP_CONFIG || {};
+  var PHONE = String(CFG.WHATSAPP || '').replace(/\D/g, '');
+  var BRAND = CFG.STORE_NAME || 'Dragone Supplement';
+  var DEMO = !CFG.SUPABASE_URL || CFG.SUPABASE_URL.indexOf('YOUR-') !== -1 || !window.supabase;
+
+  var DEMO_PRODUCTS = [
+    { id: 'd1', name: 'Whey Protein 2 kg - Chocolate', category: 'Protein', description: 'Whey protein for muscle building and post-workout recovery.', price: 2150, old_price: 2400, image_url: null, in_stock: true },
+    { id: 'd2', name: 'Whey Protein 1 kg - Vanilla', category: 'Protein', description: 'High-quality protein servings with a smooth vanilla flavor.', price: 1250, old_price: null, image_url: null, in_stock: true },
+    { id: 'd3', name: 'Creatine Monohydrate 300 g', category: 'Creatine', description: 'Pure creatine to support strength and performance.', price: 650, old_price: 750, image_url: null, in_stock: true },
+    { id: 'd4', name: 'Berry-Flavored Creatine 500 g', category: 'Creatine', description: 'Easy to mix with a great berry flavor.', price: 890, old_price: null, image_url: null, in_stock: false },
+    { id: 'd5', name: 'Pre-Workout - 30 Servings', category: 'Pre-Workout', description: 'Focus and energy before your workout.', price: 980, old_price: null, image_url: null, in_stock: true },
+    { id: 'd6', name: 'Multivitamins - 60 Capsules', category: 'Vitamins', description: 'Daily nutritional support for athletes.', price: 420, old_price: 480, image_url: null, in_stock: true },
+    { id: 'd7', name: 'Omega 3 - 90 Capsules', category: 'Vitamins', description: 'Support for heart and joint health.', price: 560, old_price: null, image_url: null, in_stock: true },
+    { id: 'd8', name: 'Mass Gainer 3 kg', category: 'Protein', description: 'High-calorie formula for weight gain.', price: 1600, old_price: null, image_url: null, in_stock: true }
+  ];
+
+  var sb = DEMO ? null : window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
+
+  function $(s) { return document.querySelector(s); }
+  function h(tag, props) {
+    var e = document.createElement(tag);
+    var kids = Array.prototype.slice.call(arguments, 2);
+    Object.keys(props || {}).forEach(function (k) {
+      var v = props[k];
+      if (v === false || v === null || v === undefined) return;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = v;
+      else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    });
+    kids.forEach(function (c) { if (c !== null && c !== undefined && c !== false) e.append(c); });
+    return e;
+  }
+  function fmt(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+  function safeUrl(u) { return typeof u === 'string' && /^https?:\/\//i.test(u) ? u : null; }
+  function waLink(text) { return 'https://wa.me/' + PHONE + (text ? '?text=' + encodeURIComponent(text) : ''); }
+  function openWa(text) { window.open(waLink(text), '_blank', 'noopener'); }
+
+  var products = [], category = 'all', query = '', loadFailed = false;
+  var cart = [];
+  try {
+    var saved = JSON.parse(localStorage.getItem('dg_cart'));
+    if (Array.isArray(saved)) {
+      cart = saved.filter(function (i) {
+        return i && typeof i.id === 'string' && typeof i.name === 'string' && isFinite(i.price) && Number.isInteger(i.qty) && i.qty > 0;
+      });
+    }
+  } catch (e) { cart = []; }
+  function saveCart() { try { localStorage.setItem('dg_cart', JSON.stringify(cart)); } catch (e) {} }
+
+  var grid = $('#grid'), chips = $('#chips'), badge = $('#badge');
+  var drawer = $('#drawer'), overlay = $('#overlay'), cartList = $('#cartList');
+  var toastEl = $('#toast'), toastTimer;
+
+  /* ---------- Toast ---------- */
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1800);
+  }
+
+  /* ---------- Products ---------- */
+  function placeholder() {
+    return h('div', { class: 'ph', 'aria-hidden': 'true' }, h('i', { class: 'fa-solid fa-dragon' }));
+  }
+
+  function card(p) {
+    var price = Number(p.price);
+    var old = p.old_price ? Number(p.old_price) : null;
+    var sale = old && old > price ? Math.round((1 - price / old) * 100) : 0;
+    var out = !p.in_stock;
+    var img = safeUrl(p.image_url);
+
+    var media = h('div', { class: 'media' + (out ? ' out' : '') });
+    if (img) {
+      var im = h('img', { src: img, alt: p.name, loading: 'lazy', width: '400', height: '400' });
+      im.addEventListener('error', function () { im.remove(); media.prepend(placeholder()); });
+      media.append(im);
+    } else {
+      media.append(placeholder());
+    }
+    if (out) media.append(h('span', { class: 'badge soldout', text: 'Out of stock' }));
+    else if (sale) media.append(h('span', { class: 'badge sale', text: '-' + sale + '%' }));
+
+    var priceRow = h('div', { class: 'price-row' },
+      h('span', { class: 'price', text: fmt(price) }),
+      h('span', { class: 'cur', text: 'EGP' }),
+      old && old > price ? h('span', { class: 'old', text: fmt(old) }) : null
+    );
+
+    var actions = h('div', { class: 'actions' },
+      h('button', { class: 'btn grow', type: 'button', disabled: out, onclick: function () { orderNow(p); } },
+        h('i', { class: 'fa-brands fa-whatsapp', 'aria-hidden': 'true' }), 'Order Now'),
+      h('button', { class: 'btn ghost', type: 'button', disabled: out, title: 'Add to cart', 'aria-label': 'Add ' + p.name + ' to cart', onclick: function () { addToCart(p); } },
+        h('i', { class: 'fa-solid fa-cart-plus', 'aria-hidden': 'true' }))
+    );
+
+    return h('article', { class: 'card' },
+      media,
+      h('div', { class: 'body' },
+        h('div', { class: 'cat', text: p.category || '' }),
+        h('h3', { class: 'name', text: p.name }),
+        p.description ? h('p', { class: 'desc', text: p.description }) : null,
+        priceRow,
+        actions
+      )
+    );
+  }
+
+  function renderSkeleton() {
+    grid.replaceChildren();
+    for (var i = 0; i < 8; i++) {
+      grid.append(h('div', { class: 'card sk', 'aria-hidden': 'true' },
+        h('div', { class: 'media' }), h('div', { class: 'sk-line' }), h('div', { class: 'sk-line', style: 'width:60%' })));
+    }
+  }
+
+  function renderChips() {
+    var cats = [];
+    products.forEach(function (p) { if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category); });
+    chips.replaceChildren();
+    [['all', 'All']].concat(cats.map(function (c) { return [c, c]; })).forEach(function (pair) {
+      chips.append(h('button', {
+        class: 'chip', type: 'button', 'aria-pressed': String(category === pair[0]), text: pair[1],
+        onclick: function () { category = pair[0]; renderChips(); renderGrid(); }
+      }));
+    });
+  }
+
+  function renderGrid() {
+    grid.replaceChildren();
+    if (loadFailed) { grid.append(h('p', { class: 'state', text: 'Unable to load products. Check your connection and refresh the page.' })); return; }
+    var q = query.trim().toLowerCase();
+    var list = products.filter(function (p) {
+      var okCat = category === 'all' || p.category === category;
+      var okQ = !q || (p.name || '').toLowerCase().indexOf(q) !== -1 || (p.description || '').toLowerCase().indexOf(q) !== -1;
+      return okCat && okQ;
+    });
+    if (!list.length) { grid.append(h('p', { class: 'state', text: 'No matching products found. Try another category or clear your search.' })); return; }
+    list.forEach(function (p) { grid.append(card(p)); });
+  }
+
+  async function load() {
+    renderSkeleton();
+    if (DEMO) {
+      products = DEMO_PRODUCTS;
+      $('#demoBar').hidden = false;
+    } else {
+      try {
+        var res = await sb.from('products').select('*').order('created_at', { ascending: false });
+        if (res.error) throw res.error;
+        products = res.data || [];
+      } catch (e) { console.error(e); loadFailed = true; }
+    }
+    if (!loadFailed) syncCart();
+    renderChips();
+    renderGrid();
+  }
+
+  /* ---------- WhatsApp ---------- */
+  function orderNow(p) {
+    openWa('Hello ' + BRAND + ', I would like to order:\n\n*Product:* ' + p.name + '\n*Price:* ' + fmt(p.price) + ' EGP\n\nPayment on delivery. Please contact me to confirm the order, delivery address, and details.');
+  }
+
+  /* ---------- Cart ---------- */
+  function syncCart() {
+    cart = cart.filter(function (i) {
+      return products.some(function (p) { return p.id === i.id && p.in_stock; });
+    }).map(function (i) {
+      var p = products.filter(function (x) { return x.id === i.id; })[0];
+      return { id: i.id, name: p.name, price: Number(p.price), qty: i.qty };
+    });
+    saveCart();
+    updateBadge();
+    renderCart();
+  }
+
+  function addToCart(p) {
+    var item = cart.filter(function (i) { return i.id === p.id; })[0];
+    if (item) item.qty += 1;
+    else cart.push({ id: p.id, name: p.name, price: Number(p.price), qty: 1 });
+    saveCart(); updateBadge(); renderCart();
+    toast('Added to cart');
+  }
+
+  function changeQty(id, d) {
+    var item = cart.filter(function (i) { return i.id === id; })[0];
+    if (!item) return;
+    item.qty += d;
+    if (item.qty <= 0) cart = cart.filter(function (i) { return i.id !== id; });
+    saveCart(); updateBadge(); renderCart();
+  }
+
+  function removeItem(id) {
+    cart = cart.filter(function (i) { return i.id !== id; });
+    saveCart(); updateBadge(); renderCart();
+  }
+
+  function cartTotal() { return cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0); }
+
+  function updateBadge() {
+    var n = cart.reduce(function (s, i) { return s + i.qty; }, 0);
+    badge.textContent = n;
+    badge.hidden = n === 0;
+  }
+
+  function renderCart() {
+    cartList.replaceChildren();
+    $('#sendBtn').disabled = cart.length === 0;
+    $('#cartTotal').textContent = fmt(cartTotal()) + ' EGP';
+    if (!cart.length) {
+      cartList.append(h('p', { class: 'dr-empty', text: 'Your cart is empty. Add products and send your order via WhatsApp.' }));
+      return;
+    }
+    cart.forEach(function (i) {
+      cartList.append(h('div', { class: 'line-item' },
+        h('div', { class: 'li-name', text: i.name }),
+        h('div', { class: 'li-row' },
+          h('div', { class: 'qty' },
+            h('button', { type: 'button', 'aria-label': 'Decrease quantity', text: '−', onclick: function () { changeQty(i.id, -1); } }),
+            h('span', { text: String(i.qty) }),
+            h('button', { type: 'button', 'aria-label': 'Increase quantity', text: '+', onclick: function () { changeQty(i.id, 1); } })),
+          h('span', { class: 'li-sum', text: fmt(i.price * i.qty) + ' EGP' }),
+          h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Remove ' + i.name + ' from cart', onclick: function () { removeItem(i.id); } },
+            h('i', { class: 'fa-solid fa-trash', 'aria-hidden': 'true' })))
+      ));
+    });
+  }
+
+  function sendCart() {
+    if (!cart.length) return;
+    var msg = 'Hello ' + BRAND + ', I would like to order:\n\n';
+    cart.forEach(function (i) {
+      msg += '- *' + i.name + '* × ' + i.qty + ' = ' + fmt(i.price * i.qty) + ' EGP\n';
+    });
+    msg += '\n*Total:* ' + fmt(cartTotal()) + ' EGP\n\nPayment on delivery. Please contact me to confirm the order, delivery address, and details.';
+    openWa(msg);
+  }
+
+  function openCart() {
+    drawer.inert = false;
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    $('#closeCart').focus();
+  }
+  function closeCart() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    drawer.inert = true;
+    $('#cartBtn').focus();
+  }
+
+  /* ---------- Wire up ---------- */
+  $('#q').addEventListener('input', function (e) { query = e.target.value; renderGrid(); });
+  $('#cartBtn').addEventListener('click', openCart);
+  $('#closeCart').addEventListener('click', closeCart);
+  overlay.addEventListener('click', closeCart);
+  $('#sendBtn').addEventListener('click', sendCart);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.classList.contains('open')) closeCart(); });
+
+  $('#fab').href = waLink('Hello, I have an inquiry about your products.');
+  var fp = $('#footPhone');
+  fp.href = waLink('');
+  fp.textContent = '+' + PHONE;
+
+  updateBadge();
+  renderCart();
+  load();
+})();
+</script>
+</body>
+</html>

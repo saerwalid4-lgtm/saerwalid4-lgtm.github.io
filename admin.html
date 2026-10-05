@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1b0f0d">
+<title>Admin Dashboard | Dragone Supplement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--base:#1b0f0d;--surface:#2a1814;--raised:#37201a;--line:#4a2e26;--ember:#ff4d1c;--ember-hi:#ff6a3d;--gold:#ffc247;--bone:#f6ead9;--ash:#b8a197;--danger:#ff8a80}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--base);color:var(--bone);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;line-height:1.6;min-height:100vh}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+[hidden]{display:none!important}
+.brand{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:26px;letter-spacing:.02em;direction:ltr;background:linear-gradient(to bottom,var(--bone),var(--gold) 45%,var(--ember));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.login{min-height:100vh;display:grid;place-items:center;padding:16px}
+.panel{background:var(--surface);border:1px solid var(--line);padding:24px;width:100%;max-width:400px;display:grid;gap:14px}
+.panel h1{font-size:20px}
+
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+.hint{font-size:12.5px;color:var(--ash);font-weight:400}
+input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;background:var(--base);border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:15px}
+input:focus,textarea:focus{border-color:var(--ember);outline:none}
+textarea{min-height:90px;resize:vertical}
+input[type=file]{font-size:14px;color:var(--ash)}
+.check{display:flex;align-items:center;gap:10px;font-size:15px}
+.check input{width:20px;height:20px;accent-color:var(--ember)}
+
+.btn{border:0;background:var(--ember);color:var(--base);font-weight:700;font-size:15px;padding:11px 18px;border-radius:4px}
+.btn:hover{background:var(--ember-hi)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:var(--raised);color:var(--bone);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ember)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn.danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.btn.danger:hover{background:var(--danger);color:var(--base)}
+
+.msg{font-size:14px;min-height:20px}
+.msg.err{color:var(--danger)}
+.msg.ok{color:var(--gold)}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--base);z-index:10}
+.top-actions{display:flex;gap:8px;align-items:center}
+.top a{color:var(--bone);font-size:14px;text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:7px 12px}
+.top a:hover{border-color:var(--ember)}
+.main{max-width:1100px;margin:0 auto;padding:16px;display:grid;gap:20px}
+@media(min-width:900px){.main{grid-template-columns:380px 1fr;align-items:start}}
+.card{background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;gap:14px}
+.card h2{font-size:17px}
+.preview{width:100%;aspect-ratio:1/1;background:var(--base);border:1px dashed var(--line);display:grid;place-items:center;color:var(--ash);font-size:14px;overflow:hidden}
+.preview img{width:100%;height:100%;object-fit:contain}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.list{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:64px 1fr;gap:12px;background:var(--raised);padding:10px;align-items:center}
+.thumb{width:64px;height:64px;background:var(--base);display:grid;place-items:center;overflow:hidden;color:var(--ash);font-size:12px}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.r-name{font-weight:600;font-size:15px}
+.r-meta{font-size:13px;color:var(--ash)}
+.r-price{color:var(--gold);font-weight:700}
+.r-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:2px;margin-inline-start:6px}
+.tag.in{background:var(--gold);color:var(--base)}
+.tag.out{border:1px solid var(--line);color:var(--ash)}
+.empty{color:var(--ash);text-align:center;padding:30px 8px}
+</style>
+</head>
+<body>
+
+<section class="login" id="loginView" hidden>
+  <form class="panel" id="loginForm" autocomplete="on">
+    <div class="brand">DRAGONE</div>
+    <h1>Admin Login</h1>
+    <label>Email
+      <input type="email" id="email" required autocomplete="username">
+    </label>
+    <label>Password
+      <input type="password" id="password" required autocomplete="current-password">
+    </label>
+    <button class="btn" id="loginBtn" type="submit">Log In</button>
+    <p class="msg err" id="loginMsg" role="alert"></p>
+  </form>
+</section>
+
+<section id="configView" class="login" hidden>
+  <div class="panel">
+    <h1>Configuration Required</h1>
+    <p>Open config.js, add your project's SUPABASE_URL and SUPABASE_ANON_KEY, then refresh the page.</p>
+  </div>
+</section>
+
+<section id="dashView" hidden>
+  <div class="top">
+    <div class="brand">DRAGONE</div>
+    <div class="top-actions">
+      <a href="index.html" target="_blank" rel="noopener">View Store</a>
+      <button class="btn ghost sm" id="logoutBtn" type="button">Log Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <form class="card" id="productForm">
+      <h2 id="formTitle">Add Product</h2>
+
+      <label>Product Name
+        <input type="text" id="fName" maxlength="120" required>
+      </label>
+
+      <label>Category
+        <input type="text" id="fCategory" maxlength="40" list="catList" required>
+        <span class="hint">This is shown to customers exactly as entered. Use the same name for all products in a category.</span>
+      </label>
+      <datalist id="catList"></datalist>
+
+      <label>Price (EGP)
+        <input type="number" id="fPrice" min="0" step="0.01" inputmode="decimal" required>
+      </label>
+
+      <label>Original Price (Optional)
+        <input type="number" id="fOld" min="0" step="0.01" inputmode="decimal">
+        <span class="hint">If it is higher than the current price, a discount will be displayed.</span>
+      </label>
+
+      <label>Description
+        <textarea id="fDesc" maxlength="600"></textarea>
+      </label>
+
+      <label>Product Image
+        <input type="file" id="fFile" accept="image/jpeg,image/png,image/webp">
+        <span class="hint">JPG, PNG, or WebP, up to 3 MB. A square image with a clean background is recommended.</span>
+      </label>
+      <div class="preview" id="preview">No image</div>
+
+      <label class="check"><input type="checkbox" id="fStock" checked> In stock</label>
+
+      <div class="form-actions">
+        <button class="btn" id="saveBtn" type="submit">Save Product</button>
+        <button class="btn ghost" id="cancelBtn" type="button" hidden>Cancel Edit</button>
+      </div>
+      <p class="msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="card">
+      <h2>Products <span class="hint" id="count"></span></h2>
+      <div class="list" id="list"></div>
+    </div>
+  </div>
+</section>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CFG = window.APP_CONFIG || {};
+  var $ = function (s) { return document.querySelector(s); };
+
+  if (!CFG.SUPABASE_URL || CFG.SUPABASE_URL.indexOf('YOUR-') !== -1 || !window.supabase) {
+    $('#configView').hidden = false;
+    return;
+  }
+
+  var sb = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
+  var BUCKET = 'product-images';
+  var MAX_BYTES = 3 * 1024 * 1024;
+  var TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+  var DEFAULT_CATS = ['Protein', 'Creatine', 'Pre-Workout', 'Vitamins'];
+
+  var items = [], editing = null, view = null, previewUrl = null;
+
+  function h(tag, props) {
+    var e = document.createElement(tag);
+    var kids = Array.prototype.slice.call(arguments, 2);
+    Object.keys(props || {}).forEach(function (k) {
+      var v = props[k];
+      if (v === false || v === null || v === undefined) return;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = v;
+      else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    });
+    kids.forEach(function (c) { if (c !== null && c !== undefined && c !== false) e.append(c); });
+    return e;
+  }
+  function fmt(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+  function safeUrl(u) { return typeof u === 'string' && /^https?:\/\//i.test(u) ? u : null; }
+  function say(el, text, kind) { el.textContent = text; el.className = 'msg' + (kind ? ' ' + kind : ''); }
+  var formMsg = $('#formMsg');
+
+  /* ---------- Views ---------- */
+  function showLogin() {
+    if (view === 'login') return;
+    view = 'login';
+    $('#dashView').hidden = true;
+    $('#loginView').hidden = false;
+  }
+  function showDash() {
+    if (view === 'dash') return;
+    view = 'dash';
+    $('#loginView').hidden = true;
+    $('#dashView').hidden = false;
+    resetForm();
+    loadItems();
+  }
+
+  /* ---------- Auth ---------- */
+  $('#loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = $('#loginBtn'), msg = $('#loginMsg');
+    say(msg, '');
+    btn.disabled = true; btn.textContent = 'Logging in...';
+    var res = await sb.auth.signInWithPassword({ email: $('#email').value.trim(), password: $('#password').value });
+    btn.disabled = false; btn.textContent = 'Log In';
+    if (res.error) { say(msg, 'The email or password is incorrect.', 'err'); return; }
+    $('#password').value = '';
+  });
+
+  $('#logoutBtn').addEventListener('click', function () { sb.auth.signOut(); });
+
+  sb.auth.onAuthStateChange(function (_evt, session) { if (session) showDash(); else showLogin(); });
+  sb.auth.getSession().then(function (r) { if (r.data && r.data.session) showDash(); else showLogin(); });
+
+  /* ---------- Data ---------- */
+  async function loadItems() {
+    var res = await sb.from('products').select('*').order('created_at', { ascending: false });
+    if (res.error) { say(formMsg, 'Unable to load products. Refresh the page and try again.', 'err'); return; }
+    items = res.data || [];
+    renderList();
+    renderCats();
+  }
+
+  function renderCats() {
+    var dl = $('#catList');
+    dl.replaceChildren();
+    var seen = {};
+    DEFAULT_CATS.concat(items.map(function (i) { return i.category; })).forEach(function (c) {
+      if (c && !seen[c]) { seen[c] = 1; dl.append(h('option', { value: c })); }
+    });
+  }
+
+  function renderList() {
+    var list = $('#list');
+    list.replaceChildren();
+    $('#count').textContent = '(' + items.length + ')';
+    if (!items.length) { list.append(h('p', { class: 'empty', text: 'There are no products yet. Add your first product using the form.' })); return; }
+    items.forEach(function (p) {
+      var img = safeUrl(p.image_url);
+      list.append(h('div', { class: 'row' },
+        h('div', { class: 'thumb' }, img ? h('img', { src: img, alt: '' }) : 'No image'),
+        h('div', null,
+          h('div', { class: 'r-name' }, p.name, h('span', { class: 'tag ' + (p.in_stock ? 'in' : 'out'), text: p.in_stock ? 'In stock' : 'Out of stock' })),
+          h('div', { class: 'r-meta' }, p.category + ' | ', h('span', { class: 'r-price', text: fmt(p.price) + ' EGP' }))
+        ),
+        h('div', { class: 'r-actions' },
+          h('button', { class: 'btn ghost sm', type: 'button', text: 'Edit', onclick: function () { startEdit(p); } }),
+          h('button', { class: 'btn ghost sm', type: 'button', text: p.in_stock ? 'Mark as Out of Stock' : 'Mark as In Stock', onclick: function () { toggleStock(p); } }),
+          h('button', { class: 'btn danger sm', type: 'button', text: 'Delete', onclick: function () { removeItem(p); } })
+        )
+      ));
+    });
+  }
+
+  /* ---------- Form ---------- */
+  function setPreview(src) {
+    var box = $('#preview');
+    box.replaceChildren();
+    if (src) box.append(h('img', { src: src, alt: 'Image preview' })); else box.textContent = 'No image';
+  }
+
+  function resetForm() {
+    editing = null;
+    $('#productForm').reset();
+    $('#fStock').checked = true;
+    $('#formTitle').textContent = 'Add Product';
+    $('#cancelBtn').hidden = true;
+    if (previewUrl) { URL.revokeObjectURL(previewUrl); previewUrl = null; }
+    setPreview(null);
+  }
+
+  function startEdit(p) {
+    editing = p;
+    $('#fName').value = p.name;
+    $('#fCategory').value = p.category;
+    $('#fPrice').value = p.price;
+    $('#fOld').value = p.old_price == null ? '' : p.old_price;
+    $('#fDesc').value = p.description || '';
+    $('#fStock').checked = !!p.in_stock;
+    $('#fFile').value = '';
+    $('#formTitle').textContent = 'Edit: ' + p.name;
+    $('#cancelBtn').hidden = false;
+    setPreview(safeUrl(p.image_url));
+    say(formMsg, '');
+    $('#productForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  $('#cancelBtn').addEventListener('click', function () { resetForm(); say(formMsg, ''); });
+
+  $('#fFile').addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    if (previewUrl) { URL.revokeObjectURL(previewUrl); previewUrl = null; }
+    if (!f) { setPreview(editing ? safeUrl(editing.image_url) : null); return; }
+    if (!TYPES[f.type]) { say(formMsg, 'Unsupported image type. Use JPG, PNG, or WebP.', 'err'); e.target.value = ''; return; }
+    if (f.size > MAX_BYTES) { say(formMsg, 'The image is larger than 3 MB. Resize it and try again.', 'err'); e.target.value = ''; return; }
+    say(formMsg, '');
+    previewUrl = URL.createObjectURL(f);
+    setPreview(previewUrl);
+  });
+
+  function pathFromUrl(url) {
+    var marker = '/' + BUCKET + '/';
+    var i = typeof url === 'string' ? url.indexOf(marker) : -1;
+    return i === -1 ? null : decodeURIComponent(url.slice(i + marker.length).split('?')[0]);
+  }
+
+  $('#productForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = $('#saveBtn');
+
+    var name = $('#fName').value.trim();
+    var cat = $('#fCategory').value.trim();
+    var price = parseFloat($('#fPrice').value);
+    var oldRaw = $('#fOld').value.trim();
+    var old = oldRaw === '' ? null : parseFloat(oldRaw);
+    var file = $('#fFile').files[0];
+
+    if (!name || !cat) { say(formMsg, 'Enter a product name and category.', 'err'); return; }
+    if (!isFinite(price) || price < 0) { say(formMsg, 'Enter a valid price.', 'err'); return; }
+    if (old !== null && (!isFinite(old) || old <= price)) { say(formMsg, 'The original price must be higher than the current price.', 'err'); return; }
+    if (file && (!TYPES[file.type] || file.size > MAX_BYTES)) { say(formMsg, 'The image must be JPG, PNG, or WebP and smaller than 3 MB.', 'err'); return; }
+
+    btn.disabled = true; btn.textContent = 'Saving...';
+    say(formMsg, '');
+
+    var imageUrl = editing ? editing.image_url : null;
+    var oldPath = editing && file ? pathFromUrl(editing.image_url) : null;
+
+    try {
+      if (file) {
+        var path = crypto.randomUUID() + '.' + TYPES[file.type];
+        var up = await sb.storage.from(BUCKET).upload(path, file, { contentType: file.type, cacheControl: '31536000' });
+        if (up.error) throw up.error;
+        imageUrl = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+      }
+      var payload = {
+        name: name, category: cat, price: price, old_price: old,
+        description: $('#fDesc').value.trim(), image_url: imageUrl, in_stock: $('#fStock').checked
+      };
+      var res = editing
+        ? await sb.from('products').update(payload).eq('id', editing.id)
+        : await sb.from('products').insert(payload);
+      if (res.error) throw res.error;
+      if (oldPath) sb.storage.from(BUCKET).remove([oldPath]);
+      resetForm();
+      say(formMsg, 'Product saved successfully.', 'ok');
+      await loadItems();
+    } catch (err) {
+      console.error(err);
+      say(formMsg, 'Unable to save the product. Check your login and Supabase permissions, then try again.', 'err');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Save Product';
+    }
+  });
+
+  async function toggleStock(p) {
+    var res = await sb.from('products').update({ in_stock: !p.in_stock }).eq('id', p.id);
+    if (res.error) { say(formMsg, 'Unable to update the product status.', 'err'); return; }
+    say(formMsg, 'Product status updated successfully.', 'ok');
+    loadItems();
+  }
+
+  async function removeItem(p) {
+    if (!confirm('Are you sure you want to permanently delete "' + p.name + '"?')) return;
+    var res = await sb.from('products').delete().eq('id', p.id);
+    if (res.error) { say(formMsg, 'Unable to delete the product.', 'err'); return; }
+    var path = pathFromUrl(p.image_url);
+    if (path) sb.storage.from(BUCKET).remove([path]);
+    if (editing && editing.id === p.id) resetForm();
+    say(formMsg, 'Product deleted successfully.', 'ok');
+    loadItems();
+  }
+})();
+</script>
+</body>
+</html>
